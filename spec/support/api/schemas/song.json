@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "required": ["data"],
+  "properties": {
+    "data": {
+      "type": ["array", "object"],
+      "required": [
+        "name",
+        "spotify_url",
+        "preview_url",
+        "duration_ms",
+        "explicit"
+      ],
+      "properties": {
+        "name": { "type": "string" },
+        "spotify_url": { "type": "string" },
+        "preview_url": { "type": "string" },
+        "duration_ms": { "type": "integer" },
+        "explicit": { "type": "boolean" }
+      },
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "spotify_url",
+          "preview_url",
+          "duration_ms",
+          "explicit"
+        ],
+        "properties": {
+          "name": { "type": "string" },
+          "spotify_url": { "type": "string" },
+          "preview_url": { "type": "string" },
+          "duration_ms": { "type": "integer" },
+          "explicit": { "type": "boolean" }
+        }
+      },
+      "minItems": 1
+    }
+  }
+}

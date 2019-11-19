@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "required": ["data"],
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "image",
+          "genres",
+          "popularity",
+          "spotify_url"
+        ],
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "image": { "type": "string" },
+          "genres": {
+            "type": ["array", "string"],
+            "items": { "type": "string" }
+          },
+          "popularity": { "type": "integer" },
+          "spotify_url": { "type": "string" }
+        }
+      }
+    }
+  }
+}
