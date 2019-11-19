@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "required": ["data"],
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "image", "spotify_url", "total_tracks"],
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "image": { "type": "string" },
+          "spotify_url": { "type": "string" },
+          "total_tracks": { "type": "integer" }
+        }
+      }
+    }
+  }
+}
