@@ -1,16 +1,23 @@
 namespace :importer do
   desc "Load artists from YAML file"
-  task load_artists: :environment do |_, args|
-    puts args.to_a
-    puts "Reading artists"
-    artists_yml = YAML.load_file(Rails.root.join("db", "seeds", "artists.yml"))
-    artists_yml["artists"].each do |artist|
+  task load_artists: :environment do
+    system "clear"
+    puts "Cleaning database"
+    DatabaseCleaner.clean_with :truncation
+    puts "Database cleaned!"
+
+    puts "Fetching artist data..."
+    artists_yml = YAML.load_file(Rails.root.join("db", "seeds", "artists.yml"))["artists"]
+    bar = TTY::ProgressBar.new("Downloading data for :artist [:bar] :percent \r", total: artists_yml.count)
+    artists_yml.each do |artist|
         artist_info = RSpotify::Artist.search(artist.to_s).first
+        bar.advance(artist: artist.to_s)
         if artist_info
-            artist = create_artist(artist_info)
-            create_artist_albums(artist_info.albums, artist)
+          artist = create_artist(artist_info)
+          create_artist_albums(artist_info.albums, artist)
         else
-            puts "Artist #{artist} not found"
+          system "clear"
+          puts "Artist #{artist} not found"
         end
     end
 end

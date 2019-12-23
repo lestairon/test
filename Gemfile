@@ -6,6 +6,9 @@ gem 'rails', '~> 5.2.3'
 gem 'puma', '~> 3.11'
 gem 'rspotify'
 gem 'dotenv-rails'
+gem "pg"
+gem 'database_cleaner', '~> 1.5', '>= 1.5.3'
+gem 'tty-progressbar', '~> 0.17.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 
@@ -18,7 +21,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
-  gem 'sqlite3'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -30,11 +33,6 @@ end
 
 group :test do
   gem "json-schema"
-  gem 'database_cleaner', '~> 1.5', '>= 1.5.3'
-end
-
-group :production do
-  gem "pg"
 end
 
 

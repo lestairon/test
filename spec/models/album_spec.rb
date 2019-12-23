@@ -1,18 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Album, type: :model do
+  let(:artist) { create :artist }
   it "should be invalid without attributes" do
-    expect(Album.new().valid?).to eq false 
+    expect(Album.new().valid?).to be false
   end
   it "should be valid with all the attributes" do
-    artist = Artist.new(name: "John Doe", 
-      image: "imageurl", 
-      genres: ["DnB", "Rock"],
-      popularity: 25,
-      spotify_url: "spotify_url",
-      spotify_id: "spotify_id")
-
-
     expect(Album.new(
       name: "Jhon Doe's Album",
       image: "imageurl",

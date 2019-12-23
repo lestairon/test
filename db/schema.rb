@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_11_21_045805) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "albums", force: :cascade do |t|
     t.string "name"
     t.string "image"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 2019_11_21_045805) do
     t.string "spotify_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "artist_id"
+    t.bigint "artist_id"
     t.index ["artist_id"], name: "index_albums_on_artist_id"
   end
 
@@ -44,8 +47,10 @@ ActiveRecord::Schema.define(version: 2019_11_21_045805) do
     t.string "spotify_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "album_id"
+    t.bigint "album_id"
     t.index ["album_id"], name: "index_songs_on_album_id"
   end
 
+  add_foreign_key "albums", "artists"
+  add_foreign_key "songs", "albums"
 end
