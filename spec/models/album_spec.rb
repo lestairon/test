@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Album, type: :model do
   let(:artist) { create :artist }
@@ -12,7 +12,7 @@ RSpec.describe Album, type: :model do
       spotify_url: "spotify_url",
       total_tracks: 12,
       spotify_id: "spotify_id",
-      artist: artist
-      ).valid?).to eq true
+      artist: artist,
+    ).valid?).to eq true
   end
 end

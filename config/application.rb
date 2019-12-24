@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -32,7 +32,7 @@ module AyendaTest
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.action_dispatch.default_headers = {
-      'Access-Control-Allow-Origin' => 'https://api.spotify.com',
+      "Access-Control-Allow-Origin" => "https://api.spotify.com",
     }
     RSpotify::authenticate(ENV["CLIENT_ID"], ENV["CLIENT_SECRET"])
   end

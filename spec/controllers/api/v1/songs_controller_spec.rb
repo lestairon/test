@@ -4,7 +4,7 @@ RSpec.describe Api::V1::SongsController, type: :controller do
   describe "#random_song" do
     before do
       create :song
-      get :random_song, params: { genre_name: "Rock" }
+      get :random_song, params: { genre_name: "rock" }
     end
 
     it "responds in json format", :focus do
